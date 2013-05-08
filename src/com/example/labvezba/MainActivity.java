@@ -2,6 +2,7 @@ package com.example.labvezba;
 
 import com.example.labvezba.adapter.ListItemsAdapter;
 import com.example.labvezba.model.LstItem;
+import com.example.tasks.DownloadTask;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 		lstView.setAdapter(adapter);
 		lstView.setOnItemClickListener(adapter);
 		lstView.setOnItemLongClickListener(adapter);
+		//loadData();
 	}
 	
 	@Override
@@ -29,17 +31,13 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		loadData();
+		
 	}
 	
 	public void loadData(){
-		String ime = "ime";
-		String prezime = "prezime";
-		for(int i = 0; i < 4; i++){
-			LstItem item = new LstItem();
-			item.name = ime + Integer.toString(i);
-			item.lastName = prezime + Integer.toString(i);
-			adapter.addItem(item);
-		}
+		DownloadTask task = new DownloadTask(this, adapter);
+		task.execute(getString(R.string.service));
+		
 	}
 
 	@Override

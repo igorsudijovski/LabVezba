@@ -3,12 +3,14 @@ package com.example.labvezba.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.labvezba.MainActivity;
 
 import com.example.labvezba.model.LstItem;
 import com.example.labvezba.MainActivity;
 import com.example.labvezba.R;
+import com.example.labvezba.ShowItems;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,8 +97,11 @@ public class ListItemsAdapter extends BaseAdapter implements OnItemClickListener
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		LstItem item = items.get(arg2);
-		Toast.makeText(ctx, item.getName() + " " + item.getLastName() ,
-				Toast.LENGTH_LONG).show();
+		//Toast.makeText(ctx, item.getName() + " " + item.getLastName() ,Toast.LENGTH_LONG).show();
+		Intent i = new Intent(ctx, ShowItems.class);
+		i.putExtra("ime", item.getName());
+		i.putExtra("prezime", item.getLastName());
+		ctx.startActivity(i);
 		
 	}
 
@@ -106,6 +111,10 @@ public class ListItemsAdapter extends BaseAdapter implements OnItemClickListener
 		// TODO Auto-generated method stub
 		deleteItem(arg2);
 		return false;
+	}
+	
+	public void addItems(List<LstItem> lst){
+		items.addAll(lst);
 	}
 
 }

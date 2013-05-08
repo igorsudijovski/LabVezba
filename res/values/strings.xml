@@ -4,5 +4,9 @@
     <string name="app_name">LabVezba</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_show_items">ShowItems</string>
+    <string name="download_title">Downloading</string>
+    <string name="download_description">Downloading items</string>
+    <string name="service">http://apache.finki.ukim.mk/raspored/fb-app/db/getusers.php</string>
 
 </resources>
